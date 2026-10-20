@@ -7,7 +7,7 @@ name = "acinus_diffusion"
 version = "0.1.0"
 description = "Oxygen diffusion modeling in the pulmonary acinus"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 authors = [
     {name = "Aya Kamouni"},
     {name = "Kpankpan Edouard Kambire"},
@@ -22,7 +22,7 @@ dependencies = [
 
 [project.optional-dependencies]
 notebooks = ["jupyter>=1.0.0"]
-dev = ["pytest>=6.0.0", "pytest-cov>=2.0.0", "flake8>=4.0.0"]
+dev = ["pytest>=7.0.0", "pytest-cov>=2.0.0", "flake8>=4.0.0"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

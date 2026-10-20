@@ -159,6 +159,11 @@ def animate_solution(N=50, M=50, L=0.01, duration=10, fps=10):
         C, _ = solve_quasistationary_diffusion(N, M, L, time)
         im.set_array(C.ravel())
 
+        # Frame 0 comes back on every repeat (and once more for the initial
+        # draw): restart the time series instead of drawing back in time.
+        if frame == 0:
+            times.clear()
+            fluxes.clear()
         times.append(time)
         fluxes.append(calculate_oxygen_flux(C, dx, lambda_param))
         line.set_data(times, fluxes)

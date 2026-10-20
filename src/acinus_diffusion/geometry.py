@@ -43,7 +43,8 @@ def create_deformed_domain(N, M, L_x, L_y, deformation_factor=0.3):
         Domain dimensions (m)
     deformation_factor : float
         Relative size of the lesion (0 = no deformation, 1 = ellipse
-        inscribed in the domain)
+        inscribed in the domain). The top and bottom rows are always kept, so
+        the exchange surfaces stay intact even when the ellipse reaches them.
 
     Returns
     -------
@@ -64,7 +65,13 @@ def create_deformed_domain(N, M, L_x, L_y, deformation_factor=0.3):
     ry = L_y * deformation_factor / 2
 
     lesion = ((X - center_x)**2 / rx**2 + (Y - center_y)**2 / ry**2) <= 1
-    return X, Y, ~lesion
+    mask = ~lesion
+
+    # Same rule as create_copd_domain: the alveolar (top) and capillary
+    # (bottom) boundaries carry the boundary conditions and must not be cut.
+    mask[0, :] = True
+    mask[-1, :] = True
+    return X, Y, mask
 
 
 def create_copd_domain(N, M, L, destruction_factor=0.3, seed=None):
