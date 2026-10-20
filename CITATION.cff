@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Acinus Oxygen Diffusion Model"
+abstract: >-
+  Finite-difference model of oxygen diffusion in the pulmonary acinus, in the
+  stationary and quasi-stationary (breathing) regimes, with a simplified model
+  of COPD.
+type: software
+license: MIT
+version: 0.1.0
+repository-code: "https://github.com/Apex1s/acinus-oxygen-diffusion"
+authors:
+  - given-names: Aya
+    family-names: Kamouni
+  - given-names: Kpankpan Edouard
+    family-names: Kambire
+  - given-names: "H'nia"
+    family-names: Harras
+  - given-names: Anas
+    family-names: Sabbahi
+keywords:
+  - pulmonary acinus
+  - oxygen diffusion
+  - finite differences
+  - screening length
+  - COPD
+references:
+  - type: article
+    title: "Smaller is better—but not too small: A physical scale for the design of the mammalian pulmonary acinus"
+    authors:
+      - family-names: Sapoval
+        given-names: B.
+      - family-names: Filoche
+        given-names: M.
+      - family-names: Weibel
+        given-names: E. R.
+    journal: "Proceedings of the National Academy of Sciences"
+    volume: 99
+    issue: 16
+    start: 10411
+    end: 10416
+    year: 2002

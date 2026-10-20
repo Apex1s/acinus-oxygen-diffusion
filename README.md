@@ -1,6 +1,12 @@
 # Acinus Oxygen Diffusion Model
 
+[![Tests](https://github.com/Apex1s/acinus-oxygen-diffusion/actions/workflows/tests.yml/badge.svg)](https://github.com/Apex1s/acinus-oxygen-diffusion/actions/workflows/tests.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
+
 A computational model of oxygen diffusion in the pulmonary acinus, solved with finite differences under physiological boundary conditions.
+
+![Breathing cycle](docs/figures/breathing.gif)
 
 ## Project Overview
 
@@ -25,6 +31,19 @@ With $u = C - C_b$ on the square $[0, L]^2$:
 | sides | symmetry | $\partial u/\partial n = 0$ |
 
 The screening length $\Lambda = D/W$ compares diffusion in air with the membrane permeability $W$. On the full domain the absorbed flux is $\Phi = D (C_a - C_b) L/(L + \Lambda)$. See [docs/report.md](docs/report.md) for details.
+
+## Results
+
+The finite-difference solver reproduces the exact solution to $10^{-9}$ relative error on every grid tested, and the flux entering at the alveolar boundary equals the flux absorbed by the capillaries (both checked in the test suite).
+
+- **The membrane, not the air, limits oxygen uptake at physiological scale.** Across a 1 cm acinus the concentration only drops from 8.40 to 8.11 mol/m³: with $\Lambda = 0.28$ m $\gg L$, almost all of the resistance sits in the membrane.
+- **Screening sets in when $\Lambda \lesssim L$.** The flux moves from the membrane-limited regime $\Phi \approx W (C_a - C_b) L$ to the diffusion-limited regime $\Phi \to D (C_a - C_b)$, with the crossover at $\Lambda \approx L$.
+- **Breathing modulates the flux in phase with the alveolar concentration.** The quasi-stationary approximation needs the diffusion time $L^2/D$ (5 s at $L = 1$ cm) to be short against the breathing period (3.3 s at rest), so it is only approximate for a 1 cm unit and well justified for smaller acini.
+- **In COPD, which damage matters depends on the regime.** Destroying 4.5 % of the tissue costs under 1 % of the flux at physiological $\Lambda$, but 9-14 % when $\Lambda$ is comparable to or smaller than $L$. Halving the membrane permeability costs about 50 % in every case.
+
+| Stationary field | Flux against screening length | COPD domain |
+|---|---|---|
+| ![Stationary regime](docs/figures/stationary.png) | ![Flux vs screening length](docs/figures/flux_lambda.png) | ![COPD domain](docs/figures/copd_domain.png) |
 
 ## Repository Structure
 
@@ -101,6 +120,8 @@ python scripts/generate_figures.py
 ## Authors
 
 Aya Kamouni, Kpankpan Edouard Kambire, H'nia Harras, Anas Sabbahi. Supervised by Marcel Filoche.
+
+To cite this work, use the metadata in [CITATION.cff](CITATION.cff) (GitHub's "Cite this repository" button reads it).
 
 ## References
 
