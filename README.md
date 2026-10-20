@@ -106,3 +106,7 @@ Aya Kamouni, Kpankpan Edouard Kambire, H'nia Harras, Anas Sabbahi. Supervised by
 
 1. Sapoval, B., Filoche, M., & Weibel, E. R. (2002). Smaller is better—but not too small: A physical scale for the design of the mammalian pulmonary acinus. *PNAS*, 99(16), 10411-10416.
 2. Felici, M., Filoche, M., & Sapoval, B. (2003). Diffusional screening in the human pulmonary acinus. *Journal of Applied Physiology*, 94(5), 2010-2016.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
